@@ -15,6 +15,7 @@
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
     
+    GameController *gameManager = [[GameController alloc] init];
     InputCollector *inputGetter = [[InputCollector alloc] init];
     NSString *userInput = [[NSString alloc] init];
     Dice *dice1 = [[Dice alloc] init];
@@ -23,33 +24,35 @@ int main(int argc, const char * argv[]) {
     Dice *dice4 = [[Dice alloc] init];
     Dice *dice5 = [[Dice alloc] init];
     
-    GameController *gameManager = [[GameController alloc] init];
-    
-    
+    //Add dice to Game Manager
     [gameManager.diceRolled addObject:dice1];
     [gameManager.diceRolled addObject:dice2];
     [gameManager.diceRolled addObject:dice3];
     [gameManager.diceRolled addObject:dice4];
     [gameManager.diceRolled addObject:dice5];
     
-    userInput = @"Y";
+    //Initialize dice values
+    [gameManager roll];
     
-    while ([userInput isEqualToString:@"Y"] || [userInput isEqualToString:@"y"] ){
-      //Clear the contents of the diceRolled
-      //[gameManager.diceRolled removeAllObjects];
+    //Play game
+    userInput = @"Y";
+    NSLog(@"Enter the dice you want to hold by typing the dice number, type [reset] to unhold all dice , type [score] to see your score, type [roll] to continue playing");
+    while ([gameManager.diceHeld count] != 5){
       
-      int tmpCtr = 0;
-      for (Dice *die in gameManager.diceRolled){
-        tmpCtr ++;
-        [die roll];
-        NSLog(@"Dice #%d value: %@", tmpCtr, die.displayValue);
-      }
-      
-      userInput = [inputGetter inputForPrompt:@"Enter the dice you want to hold by enclosing the dice in square brackets and separated each dice number with a comma [1,2,4] or type 'reset' to unhold all dice"];
+      userInput = [inputGetter inputForPrompt:@"Enter command"];
       
       if ([userInput isEqualToString:@"reset"]){
+        //Remove all held dice
         [gameManager resetDice];
-      } else {
+      }else if ([userInput isEqualToString:@"score"]){
+        //Display the score
+        NSLog(@"%@",[gameManager getScore]);
+      }else if ([userInput isEqualToString:@"roll"]){
+        //Roll dice again
+        [gameManager roll];
+        
+        userInput = @"Y";
+      } else if ([userInput isNotEqualTo:@""]){
         NSArray *selectedDice = [userInput componentsSeparatedByString:@","];
         for (NSString *dieNumberSelected in selectedDice){
           if (dieNumberSelected){
@@ -57,12 +60,11 @@ int main(int argc, const char * argv[]) {
           }
         }
       }
-
       
-
-      userInput = [inputGetter inputForPrompt:@"Do you want to roll again?(Y for yes, N for no)"];
-                   
-      
+      if ([gameManager.diceHeld count] == 5){
+        NSLog(@"Game over.");
+        NSLog(@"%@",[gameManager getScore]);
+      }
       
     }
     

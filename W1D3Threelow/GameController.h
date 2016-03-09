@@ -19,4 +19,5 @@
 -(void)roll;
 -(NSString *)getScore;
 -(int)getNumberRollsSinceReset;
+-(void)show;
 @end

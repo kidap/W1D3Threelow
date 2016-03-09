@@ -12,7 +12,7 @@
 
 @property(nonatomic) NSNumber *currentValue;
 @property(nonatomic) NSString *displayValue;
-@property(nonatomic) BOOL held;
+@property(nonatomic) BOOL isHeld;
 
 -(NSNumber *)roll;
 

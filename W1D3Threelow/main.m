@@ -40,9 +40,10 @@ int main(int argc, const char * argv[]) {
     while ([gameManager.diceHeld count] != 5){
       NSLog(@"Number of rolls taken since last reset: %d", [gameManager getNumberRollsSinceReset]);
       
-      
+      //Get user input
       userInput = [inputGetter inputForPrompt:@"Enter command: "];
       
+      //Check what option was selected
       if ([userInput isEqualToString:@"reset"]){
         //Remove all held dice
         [gameManager resetDice];
@@ -53,8 +54,13 @@ int main(int argc, const char * argv[]) {
         //Roll dice again
         [gameManager roll];
         
-        userInput = @"Y";
+        //Contiue playing
+        //userInput = @"Y";
+      }else if ([userInput isEqualToString:@"show"]){
+        //Roll dice again
+        [gameManager show];
       } else if ([userInput isNotEqualTo:@""]){
+        //Dice index is entered
         NSArray *selectedDice = [userInput componentsSeparatedByString:@","];
         for (NSString *dieNumberSelected in selectedDice){
           if (dieNumberSelected){
@@ -63,6 +69,7 @@ int main(int argc, const char * argv[]) {
         }
       }
       
+      //Check if game is Over
       if ([gameManager.diceHeld count] == 5){
         NSLog(@"Game over.");
         NSLog(@"%@",[gameManager getScore]);

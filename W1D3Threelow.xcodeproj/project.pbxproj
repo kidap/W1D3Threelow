@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A7AE49EC1C907A7A0044B912 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AE49EB1C907A7A0044B912 /* main.m */; };
-		A7AE49F31C907AB80044B912 /* Dice.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AE49F21C907AB80044B912 /* Dice.m */; };
+		A7AE49F61C907B910044B912 /* Dice.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AE49F51C907B910044B912 /* Dice.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,7 +26,8 @@
 /* Begin PBXFileReference section */
 		A7AE49E81C907A7A0044B912 /* W1D3Threelow */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = W1D3Threelow; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7AE49EB1C907A7A0044B912 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A7AE49F21C907AB80044B912 /* Dice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dice.m; sourceTree = "<group>"; };
+		A7AE49F41C907B910044B912 /* Dice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dice.h; sourceTree = "<group>"; };
+		A7AE49F51C907B910044B912 /* Dice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dice.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				A7AE49EB1C907A7A0044B912 /* main.m */,
-				A7AE49F21C907AB80044B912 /* Dice.m */,
+				A7AE49F41C907B910044B912 /* Dice.h */,
+				A7AE49F51C907B910044B912 /* Dice.m */,
 			);
 			path = W1D3Threelow;
 			sourceTree = "<group>";
@@ -121,7 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7AE49F31C907AB80044B912 /* Dice.m in Sources */,
+				A7AE49F61C907B910044B912 /* Dice.m in Sources */,
 				A7AE49EC1C907A7A0044B912 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +243,7 @@
 				A7AE49F11C907A7A0044B912 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

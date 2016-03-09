@@ -21,11 +21,33 @@ int main(int argc, const char * argv[]) {
     Dice *dice4 = [[Dice alloc] init];
     Dice *dice5 = [[Dice alloc] init];
     Dice *dice6 = [[Dice alloc] init];
+    
+    NSMutableArray *diceRolled = [[NSMutableArray alloc] init];
+    NSMutableArray *diceHeld = [[NSMutableArray alloc] init];
+    
+    
     userInput = @"Y";
     
     while ([userInput isEqualToString:@"Y"] || [userInput isEqualToString:@"y"] ){
+      //Clear the contents of the diceRolled
+      [diceRolled removeAllObjects];
       
       
+      [diceRolled addObject:dice1];
+      [diceRolled addObject:dice2];
+      [diceRolled addObject:dice3];
+      [diceRolled addObject:dice4];
+      [diceRolled addObject:dice5];
+      [diceRolled addObject:dice6];
+      
+      int tmpCtr = 0;
+      for (Dice *die in diceRolled){
+        tmpCtr ++;
+        [die roll];
+        NSLog(@"Dice #%d value: %@", tmpCtr, die.displayValue);
+      }
+      
+      /*
       [dice1 roll];
       [dice2 roll];
       [dice3 roll];
@@ -39,6 +61,7 @@ int main(int argc, const char * argv[]) {
       NSLog(@"Dice #4 value: %@", dice4.displayValue);
       NSLog(@"Dice #5 value: %@", dice5.displayValue);
       NSLog(@"Dice #6 value: %@", dice6.displayValue);
+       */
       
       userInput = [inputGetter inputForPrompt:@"Do you want to roll again?(Y for yes, N for no)"];
                    

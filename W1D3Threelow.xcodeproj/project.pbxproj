@@ -10,6 +10,7 @@
 		A7AE49EC1C907A7A0044B912 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AE49EB1C907A7A0044B912 /* main.m */; };
 		A7AE49F61C907B910044B912 /* Dice.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AE49F51C907B910044B912 /* Dice.m */; };
 		A7AE49F91C9082750044B912 /* InputCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AE49F81C9082750044B912 /* InputCollector.m */; };
+		A7AE49FC1C9085E90044B912 /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AE49FB1C9085E90044B912 /* GameController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		A7AE49F51C907B910044B912 /* Dice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dice.m; sourceTree = "<group>"; };
 		A7AE49F71C9082750044B912 /* InputCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCollector.h; sourceTree = "<group>"; };
 		A7AE49F81C9082750044B912 /* InputCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCollector.m; sourceTree = "<group>"; };
+		A7AE49FA1C9085E90044B912 /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
+		A7AE49FB1C9085E90044B912 /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				A7AE49F51C907B910044B912 /* Dice.m */,
 				A7AE49F71C9082750044B912 /* InputCollector.h */,
 				A7AE49F81C9082750044B912 /* InputCollector.m */,
+				A7AE49FA1C9085E90044B912 /* GameController.h */,
+				A7AE49FB1C9085E90044B912 /* GameController.m */,
 			);
 			path = W1D3Threelow;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7AE49F91C9082750044B912 /* InputCollector.m in Sources */,
+				A7AE49FC1C9085E90044B912 /* GameController.m in Sources */,
 				A7AE49F61C907B910044B912 /* Dice.m in Sources */,
 				A7AE49EC1C907A7A0044B912 /* main.m in Sources */,
 			);

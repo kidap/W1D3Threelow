@@ -38,8 +38,10 @@ int main(int argc, const char * argv[]) {
     userInput = @"Y";
     NSLog(@"Enter the dice you want to hold by typing the dice number, type [reset] to unhold all dice , type [score] to see your score, type [roll] to continue playing");
     while ([gameManager.diceHeld count] != 5){
+      NSLog(@"Number of rolls taken since last reset: %d", [gameManager getNumberRollsSinceReset]);
       
-      userInput = [inputGetter inputForPrompt:@"Enter command"];
+      
+      userInput = [inputGetter inputForPrompt:@"Enter command: "];
       
       if ([userInput isEqualToString:@"reset"]){
         //Remove all held dice

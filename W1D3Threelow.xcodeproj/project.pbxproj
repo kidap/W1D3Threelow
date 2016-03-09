@@ -69,10 +69,10 @@
 				A7AE49EB1C907A7A0044B912 /* main.m */,
 				A7AE49F41C907B910044B912 /* Dice.h */,
 				A7AE49F51C907B910044B912 /* Dice.m */,
-				A7AE49F71C9082750044B912 /* InputCollector.h */,
-				A7AE49F81C9082750044B912 /* InputCollector.m */,
 				A7AE49FA1C9085E90044B912 /* GameController.h */,
 				A7AE49FB1C9085E90044B912 /* GameController.m */,
+				A7AE49F71C9082750044B912 /* InputCollector.h */,
+				A7AE49F81C9082750044B912 /* InputCollector.m */,
 			);
 			path = W1D3Threelow;
 			sourceTree = "<group>";

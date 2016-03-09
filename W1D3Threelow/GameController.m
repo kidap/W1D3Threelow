@@ -9,8 +9,10 @@
 #import "GameController.h"
 
 @interface GameController(){
-
+  
   NSMutableArray *diceToBeDeleted;
+  int numberRollsSinceReset;
+  bool firstRoll;
 }
 @end
 
@@ -21,6 +23,8 @@
   self = [super init];
   
   if (self){
+    numberRollsSinceReset = 0;
+    firstRoll= YES;
     _diceRolled = [[NSMutableArray alloc] init];
     _diceHeld = [[NSMutableArray alloc] init];
     diceToBeDeleted = [[NSMutableArray alloc] init];
@@ -30,17 +34,32 @@
 }
 
 -(void)roll{
-  int tmpCtr = 0;
+  //
+  if( (diceToBeDeleted.count != 0 && diceToBeDeleted != nil) || firstRoll == YES){
+    
+    if (numberRollsSinceReset <= 5){
+      int tmpCtr = 0;
+      numberRollsSinceReset++;
+      
+      for (Dice *dieToDelete in diceToBeDeleted){
+        [self.diceRolled removeObject:dieToDelete];
+      }
+      
+      [diceToBeDeleted removeAllObjects];
+      
+      for (Dice *die in self.diceRolled){
+        tmpCtr ++;
+        [die roll];
+        NSLog(@"Dice #%d value: %@", tmpCtr, die.displayValue);
+      }
+    }else {
+      NSLog(@"You can only roll up to 5 time without resetting.");
+    }
+  }else {
+    NSLog(@"You have to hold at least 1 die before you roll again.");
+  }
   
-  for (Dice *dieToDelete in diceToBeDeleted){
-    [self.diceRolled removeObject:dieToDelete];
-  }
-
-  for (Dice *die in self.diceRolled){
-    tmpCtr ++;
-    [die roll];
-    NSLog(@"Dice #%d value: %@", tmpCtr, die.displayValue);
-  }
+  firstRoll = NO;
 }
 -(void)holdDie:(NSString *)dieHeld{
   
@@ -53,7 +72,7 @@
   //Make sure number is within allowed range
   if ([dieNumber intValue] <= self.diceRolled.count && [dieNumber intValue] >= 1){
     dieNumber = [NSNumber numberWithInt:[dieNumber intValue] - 1];
-  
+    
     bool dieNotHeldYet = YES;
     for (Dice *die in self.diceHeld){
       if ([die isEqualTo: [self.diceRolled objectAtIndex: [dieNumber integerValue]]]){
@@ -77,15 +96,20 @@
 }
 
 -(void)resetDice{
-
+  //Reset counter
+  numberRollsSinceReset = 0;
+  
+  //Remove all objects to be deleted
   for (Dice *dieToDelete in diceToBeDeleted){
     [self.diceRolled removeObject:dieToDelete];
   }
   
+  //Add the dice held back to the dice to be rolled
   for (Dice *die in self.diceHeld){
     [self.diceRolled addObject:die];
   }
   
+  //Clear buffers
   [diceToBeDeleted removeAllObjects];
   [self.diceHeld removeAllObjects];
 }
@@ -93,6 +117,7 @@
   NSString *score = [[NSString alloc] init];
   int totalScore = 0;
   
+  //Loop at each die, get the int value and display the die
   for (Dice *die in self.diceHeld){
     score = [score stringByAppendingString:die.displayValue];
     totalScore += [die.currentValue intValue];
@@ -101,6 +126,9 @@
   score = [score stringByAppendingString:[NSString stringWithFormat:@" = %d",totalScore]];
   
   return score;
+}
+-(int)getNumberRollsSinceReset{
+  return numberRollsSinceReset;
 }
 
 @end

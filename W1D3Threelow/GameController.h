@@ -18,4 +18,5 @@
 -(void)resetDice;
 -(void)roll;
 -(NSString *)getScore;
+-(int)getNumberRollsSinceReset;
 @end

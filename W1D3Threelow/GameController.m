@@ -44,6 +44,7 @@
 }
 -(void)holdDie:(NSString *)dieHeld{
   
+  
   //Format string to number
   NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
   numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -53,23 +54,40 @@
   if ([dieNumber intValue] <= self.diceRolled.count && [dieNumber intValue] >= 1){
     dieNumber = [NSNumber numberWithInt:[dieNumber intValue] - 1];
   
-    //Get the dice and save it
-    [self.diceHeld addObject: [self.diceRolled objectAtIndex: [dieNumber integerValue] ]];
-    NSLog(@"Held %@", [[self.diceRolled objectAtIndex: [dieNumber integerValue]] displayValue ]);
+    bool dieNotHeldYet = YES;
+    for (Dice *die in self.diceHeld){
+      if ([die isEqualTo: [self.diceRolled objectAtIndex: [dieNumber integerValue]]]){
+        dieNotHeldYet = NO;
+      }
+    }
     
-    //Remove dice from the rolled later
-    [diceToBeDeleted addObject:[self.diceRolled objectAtIndex: [dieNumber integerValue] ]];
-    
+    //Check if die is not held yet
+    if (dieNotHeldYet){
+      
+      //Get the dice and save it
+      [self.diceHeld addObject: [self.diceRolled objectAtIndex: [dieNumber integerValue] ]];
+      NSLog(@"Held %@", [[self.diceRolled objectAtIndex: [dieNumber integerValue]] displayValue ]);
+      
+      //Remove dice from the rolled later
+      [diceToBeDeleted addObject:[self.diceRolled objectAtIndex: [dieNumber integerValue] ]];
+    } else{
+      NSLog(@"Die already held");
+    }
   }
-  
 }
 
 -(void)resetDice{
-  //Move all the dice back to the diceRolled
+
+  for (Dice *dieToDelete in diceToBeDeleted){
+    [self.diceRolled removeObject:dieToDelete];
+  }
+  
   for (Dice *die in self.diceHeld){
     [self.diceRolled addObject:die];
-    [self.diceHeld removeObject:die];
   }
+  
+  [diceToBeDeleted removeAllObjects];
+  [self.diceHeld removeAllObjects];
 }
 -(NSString *)getScore{
   NSString *score = [[NSString alloc] init];

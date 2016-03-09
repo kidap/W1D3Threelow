@@ -10,4 +10,9 @@
 
 @interface Dice : NSObject
 
+@property(nonatomic) NSNumber *currentValue;
+
+-(NSNumber *)randomizeValue;
+-(NSString *)getCurrentValue;
+
 @end

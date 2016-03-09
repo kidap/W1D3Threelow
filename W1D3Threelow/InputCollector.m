@@ -13,7 +13,6 @@
 
 -(NSString *)inputForPrompt:(NSString *)promptString{
   char inputString[255];
-  char tmp;
   NSString *returnString = [[NSString alloc]init];
   
   //Display the prompt message

@@ -11,8 +11,8 @@
 @interface Dice : NSObject
 
 @property(nonatomic) NSNumber *currentValue;
+@property(nonatomic) NSString *displayValue;
 
--(NSNumber *)randomizeValue;
--(NSString *)getCurrentValue;
+-(NSNumber *)roll;
 
 @end

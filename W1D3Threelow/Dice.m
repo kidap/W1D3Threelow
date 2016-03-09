@@ -8,17 +8,29 @@
 
 #import "Dice.h"
 
+@interface Dice()
+-(NSNumber *)randomizeValue;
+-(NSString *)getCurrentValue;
+
+@end
+
 @implementation Dice
 
 -(instancetype) init{
   self = [super init];
   
   if (self){
-    self.currentValue = [[NSNumber alloc] init];
+    _currentValue = [[NSNumber alloc] init];
+    self.currentValue = [self randomizeValue];
   
   }
   
   return self;
+}
+-(void) setCurrentValue:(NSNumber *)inputValue{
+  _currentValue = inputValue;
+  _displayValue = [self getCurrentValue];
+
 }
 
 -(NSNumber *)randomizeValue{
@@ -27,9 +39,15 @@
   randomValue ++;
   self.currentValue = [NSNumber numberWithInt:randomValue];
   
+  return self.currentValue;
+}
+
+-(NSNumber *)roll{
+  self.currentValue = [self randomizeValue];
   
   return self.currentValue;
 }
+
 -(NSString *) getCurrentValue{
 
 // Use the ffg characters

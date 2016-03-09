@@ -8,30 +8,45 @@
 
 #import <Foundation/Foundation.h>
 #import "Dice.h"
+#import "InputCollector.h"
 
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
     
+    InputCollector *inputGetter = [[InputCollector alloc] init];
+    NSString *userInput = [[NSString alloc] init];
     Dice *dice1 = [[Dice alloc] init];
     Dice *dice2 = [[Dice alloc] init];
     Dice *dice3 = [[Dice alloc] init];
     Dice *dice4 = [[Dice alloc] init];
     Dice *dice5 = [[Dice alloc] init];
     Dice *dice6 = [[Dice alloc] init];
+    userInput = @"Y";
     
-    [dice1 randomizeValue];
-    [dice2 randomizeValue];
-    [dice3 randomizeValue];
-    [dice4 randomizeValue];
-    [dice5 randomizeValue];
-    [dice6 randomizeValue];
+    while ([userInput isEqualToString:@"Y"] || [userInput isEqualToString:@"y"] ){
+      
+      
+      [dice1 roll];
+      [dice2 roll];
+      [dice3 roll];
+      [dice4 roll];
+      [dice5 roll];
+      [dice6 roll];
+      
+      NSLog(@"Dice #1 value: %@", dice1.displayValue);
+      NSLog(@"Dice #2 value: %@", dice2.displayValue);
+      NSLog(@"Dice #3 value: %@", dice3.displayValue);
+      NSLog(@"Dice #4 value: %@", dice4.displayValue);
+      NSLog(@"Dice #5 value: %@", dice5.displayValue);
+      NSLog(@"Dice #6 value: %@", dice6.displayValue);
+      
+      userInput = [inputGetter inputForPrompt:@"Do you want to roll again?(Y for yes, N for no)"];
+                   
+      
+      
+    }
     
-    NSLog(@"Dice #1 value: %@", [dice1 getCurrentValue]);
-    NSLog(@"Dice #2 value: %@", [dice2 getCurrentValue]);
-    NSLog(@"Dice #3 value: %@", [dice3 getCurrentValue]);
-    NSLog(@"Dice #4 value: %@", [dice4 getCurrentValue]);
-    NSLog(@"Dice #5 value: %@", [dice5 getCurrentValue]);
-    NSLog(@"Dice #6 value: %@", [dice6 getCurrentValue]);
+
     
   }
     return 0;
